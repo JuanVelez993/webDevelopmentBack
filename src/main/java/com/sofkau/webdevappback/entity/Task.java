@@ -16,4 +16,6 @@ public class Task {
     private String name;
     @Column(name="done")
     private Boolean done;
+
+    private Long FKCategory;
 }
