@@ -30,15 +30,20 @@ public class CategoryDaoImplementation implements CategoryDao {
     }
 
     @Override
-    public Category createTasks(Task task) {
-        Category category= categoryRepository.findById(task.getFKCategory()).get();
+    public Category createTask(Task task) {
+        Category category = categoryRepository.findById(task.getFk_Category()).get();
         category.addTask(task);
         taskRepository.save(task);
         return categoryRepository.save(category);
     }
 
     @Override
-    public void deleteTasks(Task task) {
+    public Task editTasks(Task task) {
+        return taskRepository.save(task);
+    }
+
+    @Override
+    public void deleteTask(Task task) {
         taskRepository.deleteById(task.getId());
 
     }

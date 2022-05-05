@@ -11,9 +11,11 @@ public interface CategoryDao {
 
     Category createCategory(Category category);
 
-    Category createTasks(Task task);
+    Category createTask(Task task);
 
-    void deleteTasks(Task task);
+    Task editTasks(Task task);
+
+    void deleteTask(Task task);
 
     void deleteCategory(Category category);
 

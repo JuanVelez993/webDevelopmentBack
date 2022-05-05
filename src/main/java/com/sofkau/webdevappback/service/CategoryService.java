@@ -24,13 +24,16 @@ public class CategoryService {
         return categoryDao.createCategory(category);
     }
 
+    public Task updateCategory(Task task) {
+        return categoryDao.editTasks(task);
+    }
 
-    public Category createTasks(Task task) {
-       return categoryDao.createTasks(task);
+    public Category createTask(Task task) {
+       return categoryDao.createTask(task);
     }
 
     public void deleteTasks(Task task) {
-        categoryDao.deleteTasks(task);
+        categoryDao.deleteTask(task);
 
     }
 

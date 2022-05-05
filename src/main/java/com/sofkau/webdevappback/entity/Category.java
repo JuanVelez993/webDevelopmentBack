@@ -7,24 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Category")
-@Table(name = "category")
+@Table(name = "Category")
 @Data
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(name="name")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-    private List<Task> tasks= new ArrayList<>();
-
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Task> listOfTasks = new ArrayList<>();
 
     public Category addTask(Task task){
-        this.tasks.add(task);
+        this.listOfTasks.add(task);
         return this;
-
-    };
+    }
 }

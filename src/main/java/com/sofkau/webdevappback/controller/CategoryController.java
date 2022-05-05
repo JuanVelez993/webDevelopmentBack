@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/")
+@RequestMapping("/api")
 public class CategoryController {
 
     @Autowired
@@ -28,7 +28,13 @@ public class CategoryController {
 
     @PostMapping("create/task")
     public Category createTask(@RequestBody Task task){
-        return service.createTasks(task);
+        return service.createTask(task);
+    };
+
+
+    @PutMapping("update/task")
+    public Task updateTask(@RequestBody Task task){
+        return service.updateCategory(task);
     };
 
     @DeleteMapping("delete/category")
