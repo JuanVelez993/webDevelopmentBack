@@ -5,7 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity(name = "Task")
-@Table(name = "todolist")
+@Table(name = "task")
 @Data
 public class Task {
 
