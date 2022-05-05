@@ -1,4 +1,4 @@
-package com.sofkau.webdevappback.dao;
+package com.sofkau.webdevappback.service;
 
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class CategoryDaoImplementation implements CategoryDao {
+public class CategoryServiceImplementation implements CategoryService {
 
     @Autowired
     private CategoryRepository categoryRepository;

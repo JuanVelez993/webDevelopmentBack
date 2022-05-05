@@ -1,46 +1,25 @@
 package com.sofkau.webdevappback.service;
 
-
-import com.sofkau.webdevappback.dao.CategoryDaoImplementation;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
-@Service
-public class CategoryService {
 
-    @Autowired
-    private CategoryDaoImplementation categoryDao;
+public interface CategoryService {
 
+    Category createCategory(Category category);
 
-    public List<Category> findAllCategories() {
-        return categoryDao.findAllCategories();
-    }
+    Category createTask(Task task);
 
-    public Category createCategory(Category category) {
-        return categoryDao.createCategory(category);
-    }
+    Task editTasks(Task task);
 
-    public Task updateCategory(Task task) {
-        return categoryDao.editTasks(task);
-    }
+    void deleteTask(Task task);
 
-    public Category createTask(Task task) {
-       return categoryDao.createTask(task);
-    }
+    void deleteCategory(Category category);
 
-    public void deleteTasks(Task task) {
-        categoryDao.deleteTask(task);
+    List<Category> findAllCategories();
 
-    }
-
-
-    public void deleteCategory(Category category) {
-        categoryDao.deleteCategory(category);
-
-    }
 
 }

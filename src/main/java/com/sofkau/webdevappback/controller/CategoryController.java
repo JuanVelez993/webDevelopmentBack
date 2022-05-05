@@ -35,7 +35,7 @@ public class CategoryController {
 
     @PutMapping("update/task")
     public Task updateTask(@RequestBody Task task){
-        return service.updateCategory(task);
+        return service.editTasks(task);
     };
 
     @DeleteMapping("delete/category")
@@ -45,7 +45,7 @@ public class CategoryController {
 
     @DeleteMapping("delete/task")
     public void deleteTask(@RequestBody Task task){
-        service.deleteTasks(task);
+        service.deleteTask(task);
     };
 
 }
