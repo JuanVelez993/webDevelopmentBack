@@ -1,8 +1,5 @@
 package com.sofkau.webdevappback.dto;
 
-
-import lombok.Data;
-
 public class TaskDto {
 
     private Long id;

@@ -63,7 +63,13 @@ public class CategoryServiceImplementation implements CategoryService {
 
     @Override
     public void deleteCategory(CategoryDto categoryDto) {
-        categoryRepository.deleteById(categoryDto.getId());
+        Category category = categoryMapper.toCategory(categoryDto);
+        if (!category.getListOfTasks().isEmpty()) {
+            category.getListOfTasks()
+                    .forEach(task -> taskRepository.deleteById(task.getId()));
+        }
+        categoryRepository.deleteById(category.getId());
+
     }
 
 
