@@ -1,9 +1,12 @@
 package com.sofkau.webdevappback.service;
 
+import com.sofkau.webdevappback.dto.CategoryDto;
+import com.sofkau.webdevappback.dto.TaskDto;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
 import com.sofkau.webdevappback.repository.CategoryRepository;
 import com.sofkau.webdevappback.repository.TaskRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +20,9 @@ public class CategoryServiceImplementation implements CategoryService {
 
     @Autowired
     private TaskRepository taskRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
 
     @Override
@@ -54,6 +60,26 @@ public class CategoryServiceImplementation implements CategoryService {
 
     }
 
+
+    private CategoryDto categoryToDTO(Category category){
+        CategoryDto categoryDTO = modelMapper.map(category, CategoryDto.class);
+        return categoryDTO;
+    };
+
+    private Category dtoToCategory(CategoryDto categoryDto){
+        Category category = category = modelMapper.map(categoryDto, Category.class);
+        return category;
+    }
+
+    private TaskDto taskToDTO(Task task){
+        TaskDto taskDTO = modelMapper.map(task, TaskDto.class);
+        return taskDTO;
+    };
+
+    private Task dtoToTask(TaskDto taskDto){
+        Task task = modelMapper.map(taskDto, Task.class);
+        return task;
+    }
 
 
 
