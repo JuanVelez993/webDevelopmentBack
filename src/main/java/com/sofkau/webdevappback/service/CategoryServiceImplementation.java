@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class CategoryServiceImplementation implements CategoryService {
@@ -26,8 +27,10 @@ public class CategoryServiceImplementation implements CategoryService {
 
 
     @Override
-    public List<Category> findAllCategories() {
-        return categoryRepository.findAll();
+    public List<CategoryDto> findAllCategories() {
+        return categoryRepository.findAll().stream()
+                .map(this::categoryToDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

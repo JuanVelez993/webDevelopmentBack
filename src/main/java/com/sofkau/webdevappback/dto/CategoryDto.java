@@ -13,5 +13,5 @@ public class CategoryDto {
 
     private String name;
 
-    private List<Task> tasks= new ArrayList<>();
+    private List<Task> listOfTasks= new ArrayList<>();
 }

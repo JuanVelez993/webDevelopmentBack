@@ -7,8 +7,7 @@ import lombok.Data;
 public class TaskDto {
 
     private Long id;
-
-    private String name;
-
-    private Boolean done;
+    private String taskName;
+    private boolean isDone;
+    private Long fk_Category;
 }

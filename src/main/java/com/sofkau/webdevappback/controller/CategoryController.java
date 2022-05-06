@@ -1,5 +1,6 @@
 package com.sofkau.webdevappback.controller;
 
+import com.sofkau.webdevappback.dto.CategoryDto;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
 import com.sofkau.webdevappback.service.CategoryService;
@@ -18,7 +19,7 @@ public class CategoryController {
     private CategoryService service;
 
     @GetMapping("get/categories")
-    public List<Category> getAllCategories(){
+    public List<CategoryDto> getAllCategories(){
         return service.findAllCategories();
     };
 

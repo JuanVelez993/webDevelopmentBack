@@ -1,5 +1,6 @@
 package com.sofkau.webdevappback.service;
 
+import com.sofkau.webdevappback.dto.CategoryDto;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
 
@@ -19,7 +20,7 @@ public interface CategoryService {
 
     void deleteCategory(Category category);
 
-    List<Category> findAllCategories();
+    List<CategoryDto> findAllCategories();
 
 
 }
