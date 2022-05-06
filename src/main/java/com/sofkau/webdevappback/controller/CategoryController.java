@@ -1,6 +1,7 @@
 package com.sofkau.webdevappback.controller;
 
 import com.sofkau.webdevappback.dto.CategoryDto;
+import com.sofkau.webdevappback.dto.TaskDto;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
 import com.sofkau.webdevappback.service.CategoryService;
@@ -24,28 +25,28 @@ public class CategoryController {
     };
 
     @PostMapping("create/category")
-    public Category createCategory(@RequestBody Category category){
+    public CategoryDto createCategory(@RequestBody CategoryDto category){
         return service.createCategory(category);
     };
 
     @PostMapping("create/task")
-    public Category createTask(@RequestBody Task task){
+    public CategoryDto createTask(@RequestBody TaskDto task){
         return service.createTask(task);
     };
 
 
     @PutMapping("update/task")
-    public Task updateTask(@RequestBody Task task){
+    public TaskDto updateTask(@RequestBody TaskDto task){
         return service.editTasks(task);
     };
 
     @DeleteMapping("delete/category")
-    public void deleteCategory(@RequestBody Category category){
+    public void deleteCategory(@RequestBody CategoryDto category){
         service.deleteCategory(category);
     };
 
     @DeleteMapping("delete/task")
-    public void deleteTask(@RequestBody Task task){
+    public void deleteTask(@RequestBody TaskDto task){
         service.deleteTask(task);
     };
 

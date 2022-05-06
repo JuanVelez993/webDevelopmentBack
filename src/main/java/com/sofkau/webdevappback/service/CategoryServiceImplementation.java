@@ -2,6 +2,8 @@ package com.sofkau.webdevappback.service;
 
 import com.sofkau.webdevappback.dto.CategoryDto;
 import com.sofkau.webdevappback.dto.TaskDto;
+import com.sofkau.webdevappback.dto.mapper.CategoryMapper;
+import com.sofkau.webdevappback.dto.mapper.TaskMapper;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
 import com.sofkau.webdevappback.repository.CategoryRepository;
@@ -23,66 +25,49 @@ public class CategoryServiceImplementation implements CategoryService {
     private TaskRepository taskRepository;
 
     @Autowired
-    private ModelMapper modelMapper;
+    private CategoryMapper categoryMapper;
+
+    @Autowired
+    private TaskMapper taskMapper;
 
 
     @Override
     public List<CategoryDto> findAllCategories() {
-        return categoryRepository.findAll().stream()
-                .map(this::categoryToDTO)
-                .collect(Collectors.toList());
+        List<Category> categoryList = categoryRepository.findAll();
+        return categoryMapper.toCategoryDtos(categoryList);
     }
 
     @Override
-    public Category createCategory(Category category) {
-        return categoryRepository.save(category);
+    public CategoryDto createCategory(CategoryDto categoryDto) {
+        Category category = categoryRepository.save(categoryMapper.toCategory(categoryDto));
+        return categoryMapper.toCategoryDto(category);
     }
 
     @Override
-    public Category createTask(Task task) {
-        Category category = categoryRepository.findById(task.getFk_Category()).get();
-        category.addTask(task);
-        taskRepository.save(task);
-        return categoryRepository.save(category);
+    public CategoryDto createTask(TaskDto taskDto) {
+        Category category = categoryRepository.findById(taskDto.getFk_Category()).get();
+        category.addTask(taskMapper.toTask(taskDto));
+        taskRepository.save(taskMapper.toTask(taskDto));
+        return categoryMapper.toCategoryDto(categoryRepository.save(category));
     }
 
     @Override
-    public Task editTasks(Task task) {
-        return taskRepository.save(task);
+    public TaskDto editTasks(TaskDto taskDto) {
+        return taskMapper.toTaskDto(taskRepository.save(taskMapper.toTask(taskDto)));
     }
 
     @Override
-    public void deleteTask(Task task) {
-        taskRepository.deleteById(task.getId());
-
+    public void deleteTask(TaskDto taskDto) {
+        taskRepository.deleteById(taskDto.getId());
     }
 
     @Override
-    public void deleteCategory(Category category) {
-        categoryRepository.deleteById(category.getId());
-
+    public void deleteCategory(CategoryDto categoryDto) {
+        categoryRepository.deleteById(categoryDto.getId());
     }
 
 
-    private CategoryDto categoryToDTO(Category category){
-        CategoryDto categoryDTO = modelMapper.map(category, CategoryDto.class);
-        return categoryDTO;
-    };
 
-    private Category dtoToCategory(CategoryDto categoryDto){
-        Category category = category = modelMapper.map(categoryDto, Category.class);
-        return category;
-    }
-
-    private TaskDto taskToDTO(Task task){
-        TaskDto taskDTO = modelMapper.map(task, TaskDto.class);
-        return taskDTO;
-    };
-
-    private Task dtoToTask(TaskDto taskDto){
-        Task task = modelMapper.map(taskDto, Task.class);
-        return task;
-    }
 
 
 

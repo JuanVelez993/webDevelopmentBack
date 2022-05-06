@@ -1,6 +1,7 @@
 package com.sofkau.webdevappback.service;
 
 import com.sofkau.webdevappback.dto.CategoryDto;
+import com.sofkau.webdevappback.dto.TaskDto;
 import com.sofkau.webdevappback.entity.Category;
 import com.sofkau.webdevappback.entity.Task;
 
@@ -10,15 +11,15 @@ import java.util.List;
 
 public interface CategoryService {
 
-    Category createCategory(Category category);
+    CategoryDto createCategory(CategoryDto categoryDto);
 
-    Category createTask(Task task);
+    CategoryDto createTask(TaskDto taskDto);
 
-    Task editTasks(Task task);
+    TaskDto editTasks(TaskDto taskDto);
 
-    void deleteTask(Task task);
+    void deleteTask(TaskDto taskDto);
 
-    void deleteCategory(Category category);
+    void deleteCategory(CategoryDto category);
 
     List<CategoryDto> findAllCategories();
 
